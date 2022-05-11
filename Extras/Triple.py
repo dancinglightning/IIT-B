@@ -1,16 +1,16 @@
 x1 = int(input())
-
 for i in range(x1):
     z = int(input())
     l = input().split(" ")
-    x = -1
-    d = {}
-    for j in l:
-        if j not in d:
-            d[j] = 1
-        elif d[j]>=2:
-            x = j
-        elif d[j]<2:
-            d[j] += 1
+    x = [l[0]]
+    for j in range(1, len(l)):
+        if int(l[j])<int(x[0]):
+            x = [l[j]] + x
+            l.pop(j)
+        else:
+            x = x + [l[j]]
+            l.pop(j)
     
-    print(x)
+    for k in range(len(x)-1):
+        print(x[k], end=" ")
+    print(l[-1])
